@@ -1,6 +1,48 @@
-# ***`ADK` `Web`***
+# >>> ***`ADK` `Web`***
 
     You can port forward to ngrok.
+
+    >>> adk web --port 8000
+    >>> ngrok http --url=internal-adjusted-possum.ngrok-free.app 8000
+
+<img width="1322" height="699" alt="image" src="https://github.com/user-attachments/assets/c38e9b06-d356-4cac-bc32-73a94d7b7d77" />
+<br><br>
+
+>- Install and Run Ngrok : https://dashboard.ngrok.com/get-started/setup/linux
+>- Deployed temporarily at : [`click here`](https://internal-adjusted-possum.ngrok-free.app/dev-ui/?app=tool_agent&session=00501ecd-79e9-4323-8aab-d835d407b1f6)
+>- **Note** : `name=` parameter must match folder name, here `tool_agent` or `greeting_agent`.
+
+```py
+root_agent = Agent(
+    name="tool_agent",
+    ...
+
+root_agent = Agent(
+    name="greeting_agent",
+    ...
+```
+
+```bash
+>>> tree
+.
+├── 1-basic-agent
+│   └── greeting_agent
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   ├── __init__.cpython-312.pyc
+│       │   └── agent.cpython-312.pyc
+│       └── agent.py
+├── 2-tool-agent
+│   └── tool_agent
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   ├── __init__.cpython-312.pyc
+│       │   └── agent.cpython-312.pyc
+│       └── agent.py
+└── requirements.txt
+```
+
+---
 
 ## `1-basic-agent`
 
