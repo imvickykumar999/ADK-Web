@@ -1,5 +1,17 @@
 # >>> ***`ADK` `Web`***
 
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+adk web --session_service_uri sqlite:///sessions.db --port 5000
+
+Go to http://localhost:5000
+Ctrl + C to exit.
+```
+
+<img width="1324" height="706" alt="image" src="https://github.com/user-attachments/assets/16863076-06fb-4834-a50f-2aeed30a0d61" />
+
     You can port forward to ngrok.
 
     >>> adk web --port 8000
