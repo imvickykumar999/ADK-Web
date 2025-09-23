@@ -2,8 +2,15 @@
 
 ```bash
 python3 -m venv .venv
+
+# ubuntu
 source .venv/bin/activate
+
+# windows
+.venv\Scripts\Activate
+
 pip install -r requirements.txt
+
 adk web --session_service_uri sqlite:///sessions.db --port 5000
 
 Go to http://localhost:5000
