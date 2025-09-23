@@ -17,6 +17,22 @@ Go to http://localhost:5000
 Ctrl + C to exit.
 ```
 
+## Pushing on Docker Hub
+
+To tag and push your image, use the correct repository name you found in the output: **`adk-web-adk-web`**.
+
+Here are the correct commands based on your `docker images` output:
+
+1.  **Tag the image:**
+    `docker tag adk-web-adk-web imvickykumar999/adk-web:latest`
+
+2.  **Push the image:**
+    `docker push imvickykumar999/adk-web:latest`
+
+After the push is complete, you'll be able to see the new image on your Docker Hub profile at `https://hub.docker.com/repository/docker/imvickykumar999/adk-web`. 
+
+---
+
 <img width="1324" height="706" alt="image" src="https://github.com/user-attachments/assets/16863076-06fb-4834-a50f-2aeed30a0d61" />
 
     You can port forward to ngrok.
