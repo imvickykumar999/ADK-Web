@@ -1,0 +1,921 @@
+{
+  "id": "bc1ac95b-56d7-447e-b47c-f4349096e16c",
+  "appName": "instance",
+  "userId": "user",
+  "state": {},
+  "events": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "hello"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-c6e2cd86-7190-46a9-822b-f6ec8b744462",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "longRunningToolIds": [],
+      "id": "a4778a6f-3370-4e74-befd-0a71f5504d4a",
+      "timestamp": 1758626173.026418
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Hello, how can I assist you today?\n"
+          }
+        ],
+        "role": "model"
+      },
+      "invocationId": "e-c6e2cd86-7190-46a9-822b-f6ec8b744462",
+      "author": "instance",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "longRunningToolIds": [],
+      "id": "fd5a3c2e-4b3b-4d04-a66c-154c4ca14580",
+      "timestamp": 1758626173.043953
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "what is biological name of frog"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-d73f82e6-df35-4cb6-a63a-2fc2d7c4c851",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "longRunningToolIds": [],
+      "id": "97fc7564-6f4b-4cf6-9fbe-8459809e5295",
+      "timestamp": 1758626189.124698
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "The classification of a frog is as follows:\n*   Kingdom: Animalia\n*   Phylum: Chordata\n*   Class: Amphibia\n*   Order: Anura\n\nWithin the order Anura, there are numerous species. For example, *Rana tigrina* (*Hoplobatrachus tigrinus*) is a common frog species found in the Indian subcontinent. *Dryophytes japonicus* (*Hyla japonica*), or the Japanese tree frog, is native to Japan, China, and Korea.\n"
+          }
+        ],
+        "role": "model"
+      },
+      "groundingMetadata": {
+        "groundingChunks": [
+          {
+            "web": {
+              "title": "study.com",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEnJ7exBTOHhe5Y1jSVsqmBoH4SEziw6kfrBnJYl5VBxTutjAT2RpHuvdx9M3hNbUitxRoZo8urOdc0lcpv8_rUDrys94VRmLjaqvgomcIzbcoLJb6yVDdXFbJc1zvVUd2b3gf07Q8d3iJt9y4ndMyowZUNoZRPjKi_Ivf_WKiPo-Khp_rkDT3rwwnGSlzTg15W9i-lmw=="
+            }
+          },
+          {
+            "web": {
+              "title": "journeynorth.org",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPj1DKGs42XDAtOLSrK2Kryd6wmmkmg2Az3bY0P0WEPrl3bwkfHOEyUn0dLKxE8a8ECAWcly6ciU82oKoYEAJtBWLE5xoWL3VJQdKN-t9Rq2O6FcgdD3rph1OALauof2Z_l1nsY9RBxTo="
+            }
+          },
+          {
+            "web": {
+              "title": "byjus.com",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG1jDvX2wqWDemQAhTwGUdazH3hT_1pB9ZS8xXdhnM70HbjDfcTpO2Z35P3eug5Wd741-m81hFpCl1p-L708hCD9-9DYwlFBl655XzrSQvaxHuTU9da_QE63UmPRz_eq_H-cmzd"
+            }
+          },
+          {
+            "web": {
+              "title": "wikipedia.org",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGr_YSrP_QlzYBI3pnQSo1RpujuSM3Wh97NoDeFGHAXyXGY8u7LaLuvIcUh__8XirxWfqeg6UROM4R6ie44-GzcQj5_QIPXkdV1NK-Gn2X_pX1RFEhTW3Kxo3P3hWoTb5n5NFh5BeMgbhj6"
+            }
+          }
+        ],
+        "groundingSupports": [
+          {
+            "confidenceScores": [
+              0.5368133,
+              0.8976672
+            ],
+            "groundingChunkIndices": [
+              0,
+              1
+            ],
+            "segment": {
+              "endIndex": 42,
+              "text": "The classification of a frog is as follows"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.8258225
+            ],
+            "groundingChunkIndices": [
+              1
+            ],
+            "segment": {
+              "endIndex": 65,
+              "startIndex": 42,
+              "text": ":\n*   Kingdom: Animalia"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.72953564
+            ],
+            "groundingChunkIndices": [
+              1
+            ],
+            "segment": {
+              "endIndex": 86,
+              "startIndex": 66,
+              "text": "*   Phylum: Chordata"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.90285623
+            ],
+            "groundingChunkIndices": [
+              1
+            ],
+            "segment": {
+              "endIndex": 106,
+              "startIndex": 87,
+              "text": "*   Class: Amphibia"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.8267869,
+              0.9309503
+            ],
+            "groundingChunkIndices": [
+              0,
+              1
+            ],
+            "segment": {
+              "endIndex": 123,
+              "startIndex": 107,
+              "text": "*   Order: Anura"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.9555933
+            ],
+            "groundingChunkIndices": [
+              2
+            ],
+            "segment": {
+              "endIndex": 290,
+              "startIndex": 177,
+              "text": "For example, *Rana tigrina* (*Hoplobatrachus tigrinus*) is a common frog species found in the Indian subcontinent"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.95642734
+            ],
+            "groundingChunkIndices": [
+              3
+            ],
+            "segment": {
+              "endIndex": 397,
+              "startIndex": 292,
+              "text": "*Dryophytes japonicus* (*Hyla japonica*), or the Japanese tree frog, is native to Japan, China, and Korea"
+            }
+          }
+        ],
+        "retrievalMetadata": {},
+        "searchEntryPoint": {
+          "renderedContent": "<style>\n.container {\n  align-items: center;\n  border-radius: 8px;\n  display: flex;\n  font-family: Google Sans, Roboto, sans-serif;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 8px 12px;\n}\n.chip {\n  display: inline-block;\n  border: solid 1px;\n  border-radius: 16px;\n  min-width: 14px;\n  padding: 5px 16px;\n  text-align: center;\n  user-select: none;\n  margin: 0 8px;\n  -webkit-tap-highlight-color: transparent;\n}\n.carousel {\n  overflow: auto;\n  scrollbar-width: none;\n  white-space: nowrap;\n  margin-right: -12px;\n}\n.headline {\n  display: flex;\n  margin-right: 4px;\n}\n.gradient-container {\n  position: relative;\n}\n.gradient {\n  position: absolute;\n  transform: translate(3px, -9px);\n  height: 36px;\n  width: 9px;\n}\n@media (prefers-color-scheme: light) {\n  .container {\n    background-color: #fafafa;\n    box-shadow: 0 0 0 1px #0000000f;\n  }\n  .headline-label {\n    color: #1f1f1f;\n  }\n  .chip {\n    background-color: #ffffff;\n    border-color: #d2d2d2;\n    color: #5e5e5e;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #f2f2f2;\n  }\n  .chip:focus {\n    background-color: #f2f2f2;\n  }\n  .chip:active {\n    background-color: #d8d8d8;\n    border-color: #b6b6b6;\n  }\n  .logo-dark {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);\n  }\n}\n@media (prefers-color-scheme: dark) {\n  .container {\n    background-color: #1f1f1f;\n    box-shadow: 0 0 0 1px #ffffff26;\n  }\n  .headline-label {\n    color: #fff;\n  }\n  .chip {\n    background-color: #2c2c2c;\n    border-color: #3c4043;\n    color: #fff;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #353536;\n  }\n  .chip:focus {\n    background-color: #353536;\n  }\n  .chip:active {\n    background-color: #464849;\n    border-color: #53575b;\n  }\n  .logo-light {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);\n  }\n}\n</style>\n<div class=\"container\">\n  <div class=\"headline\">\n    <svg class=\"logo-light\" width=\"18\" height=\"18\" viewBox=\"9 9 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z\" fill=\"#4285F4\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z\" fill=\"#34A853\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z\" fill=\"#FBBC05\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z\" fill=\"#EA4335\"/>\n    </svg>\n    <svg class=\"logo-dark\" width=\"18\" height=\"18\" viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\">\n      <circle cx=\"24\" cy=\"23\" fill=\"#FFF\" r=\"22\"/>\n      <path d=\"M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z\" fill=\"#4285F4\"/>\n      <path d=\"M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z\" fill=\"#34A853\"/>\n      <path d=\"M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z\" fill=\"#FBBC05\"/>\n      <path d=\"M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z\" fill=\"#EA4335\"/>\n    </svg>\n    <div class=\"gradient-container\"><div class=\"gradient\"></div></div>\n  </div>\n  <div class=\"carousel\">\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFGRsY12lk9Ko8_kEvPDxJPTRrcC0FlomYb2Vu5Zb1hV2SUMNFeBMLRcROPSAYSV0RGhP6bnGm8mH2faDvsFiFMN2z6tgN7MBiKyBshG0L14fs6kfBJ5KzsR55_hiYbjfhKott06BGFAx3VCyIECndt2af2wICUEP42jQdooZ2ZdrA3s2qzae6OVmn525pB72H1aXb6e40kQH3mrDOfRu72-Q9f6w==\">What species do frogs belong to?</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGK9uLG9u7QYZk6bJlG51PA6k0v4p-tfwmK5cQr00KDbeBADU0U5LfzRYInHw5Q1tbWbsEv6xLdGGWlAD9uWc3Lx1JgXln8kmqNRwRW9oC1xpLEvzI_zvUdih7i7ev3cTys6RMwnEO54SWpVTj-A4tah7nYNvPlW_2S-DPPQLdaSXqYY7Sy0tA_DFILIGVQUr3WNcIHrpCJv0k=\">biological name of frog</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGPPRDnIlNqVDPleC7kvFJRjCl8I5-SQcxQPMzQg5naXS3EEBdp19vlVBDGO-LtQ8A0GZYXtELUtdDMcBlZRtE7kEjmAoLonepLYPVDkUKf5iGY9udxord-6Reu0npW0H6f9GWLBcGdsRY82lKUdbL5EApmSqeo8mkPpGizWbHYjhIgK2RiN2_rZo9ad9QjEFUzABSIvrrwfoAqkbTDJ_3Hb-TGFX88c7Mo\">What is the classification of a frog?</a>\n  </div>\n</div>\n"
+        },
+        "webSearchQueries": [
+          "What is the classification of a frog?",
+          "What species do frogs belong to?",
+          "biological name of frog"
+        ]
+      },
+      "invocationId": "e-d73f82e6-df35-4cb6-a63a-2fc2d7c4c851",
+      "author": "instance",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "longRunningToolIds": [],
+      "id": "afc141ff-e386-4bb2-b0c3-fd16819c6a5f",
+      "timestamp": 1758626189.142623
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "are they poisonious?"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-8ad2c80f-7ed3-4e8a-8f3b-040359e362d6",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "longRunningToolIds": [],
+      "id": "21e4e47c-168b-4c43-88df-e46b1834b66d",
+      "timestamp": 1758626202.430086
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Whether or not frogs are poisonous depends on the species. Here's a breakdown:\n\n*   **Poisonous Frogs**: Many frog species secrete toxins through their skin as a defense mechanism against predators. These toxins can cause reactions like swelling, nausea, and muscle paralysis. Poisonous frogs are often brightly colored, which warns potential predators of their toxicity.\n*   **Poison Dart Frogs**: The family Dendrobatidae, commonly known as poison dart frogs, are known for their toxicity and bright colors. These frogs store poisons in their skin, which they obtain from their diet of ants, termites, and other small insects. The golden poison frog (*Phyllobates terribilis*) is considered the most poisonous frog and one of the most poisonous animals in the world.\n*   **Venomous Frogs**: While most poisonous frogs secrete toxins, only two known species are venomous: Bruno's casque-headed frog (*Aparasphenodon brunoi*) and Greening's frog (*Corythomantis greeningi*). These frogs, found in Brazil, have spiny bone protrusions on their skulls that inject venom.\n*   **Loss of Toxicity in Captivity**: Poison dart frogs raised in captivity typically lose their toxicity due to the altered diets.\n"
+          }
+        ],
+        "role": "model"
+      },
+      "groundingMetadata": {
+        "groundingChunks": [
+          {
+            "web": {
+              "title": "nhm.ac.uk",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHGyhlELfRZ5N9EmSi7qxlRbIjqc0GoeuYo2YbnDATo8R_PNtv_mw9MHurhVealxLWUFKXc34de4ztRUdy7FFavTOQyTbGzEka_mHAq0BB7UNFbrjtx9PBXSYJAQtNp0QqW5uzogpiCSbwY00zCz-H5tbKbeA=="
+            }
+          },
+          {
+            "web": {
+              "title": "zooatlanta.org",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_VDB7P-e6KUdIKMgeWoTVHGVmqeMGF7rPdY9F6veqo6e6Ee4D1cGvW1-03_oZNpXCveh3384mKN7xwpdNCfqc79omCamT_knwmWOvqoB_oH-BgFxvcs-A8GEmhaxkeNTBrLpxMpflacOr3LWpm9o45X9xWGRDPFIJ"
+            }
+          },
+          {
+            "web": {
+              "title": "sandiegozoo.org",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEQEiSs1m5C8b5qsaVSOzYOkfci_d36xBU7rs2Vij9Mjry6nipkUqGK3p-Du0TgW1Lm20IsJfzeDU_Vfmxx8ckP1omxqDvREr3JefEYDkVOoQyQEV94nvklcFrMpo0Okqu2L31D8jiVOccF9cP0PA=="
+            }
+          },
+          {
+            "web": {
+              "title": "webmd.com",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEo192lF-7cPTEx3pg1fdmP1bmSDdVHtZwuEtbobrRfawjbk7D8RhgAg1cvrmdc7S_P-bhlhLV8_OoOZYMl7oSNKFJ5kqnYn7lbu2sC4UFkYnyfd5I7boZlpP7nprv8ogJsWjlvl9cqaqnFVTJHCTbNrq-pxkdOwR49uJE8dSYxxoY="
+            }
+          },
+          {
+            "web": {
+              "title": "wikipedia.org",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEg2bKjaiSxfC2VjB6mu2WULWaYVQzjvpoMECPfADtFSAYngi67BGuaa-mwW3oH8sOkBr8nApS-fKOF2FcDJ_yrfeV9WmIjCa01PUiJpaKYBkXXesUV48AB54yrDeHwpM81euRBF11YXDM="
+            }
+          },
+          {
+            "web": {
+              "title": "si.edu",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFmvE-SUJuvKW_bTQ1exBfYkZqLZAhajHBcM1GaHJ7n3X-NhfLlgK4zjQSvqSpwApSHHrb9jdHVrAz8su5Uh0sjjavYat3G7T1UcPL44EiiCYKGkOZkfoPASwRlmj2TutIBwnV7KjStHIKU"
+            }
+          },
+          {
+            "web": {
+              "title": "rainforest-alliance.org",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE5t5Q5EB-YhDaunmqmubzdZcDP76FoiI2Nhru7IBD8o5RYZPF6ZHVxQWxKXfe-ouzPX-J3xD9KJ3SiuyeUXiYjmfMEeJvN1sXZWfpRJd-M-SvkHEFd-o9cpEhrIHJMBoQg_3YAnMT3DaTURk7wfAOE2PQ-Rm07E6Q="
+            }
+          },
+          {
+            "web": {
+              "title": "treehugger.com",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGk2g6VpCoxFGEBmgOWx4eSAeAWX34e_xQ1DBPOUTHJfkfVAfotisfKGQ_z1J6DZ-LbWViP20Vyht1sjbXRnfrvQPlsfyBEn90y64gxgLaAvGhQxCttFXWYwsttCTrOzdIf0uuIg69aRLR2KUit3qcxnjjm7g=="
+            }
+          }
+        ],
+        "groundingSupports": [
+          {
+            "confidenceScores": [
+              0.9322546,
+              0.30097646
+            ],
+            "groundingChunkIndices": [
+              0,
+              1
+            ],
+            "segment": {
+              "endIndex": 197,
+              "startIndex": 80,
+              "text": "*   **Poisonous Frogs**: Many frog species secrete toxins through their skin as a defense mechanism against predators"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.8038988,
+              0.89531153
+            ],
+            "groundingChunkIndices": [
+              2,
+              3
+            ],
+            "segment": {
+              "endIndex": 275,
+              "startIndex": 199,
+              "text": "These toxins can cause reactions like swelling, nausea, and muscle paralysis"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.4141966,
+              0.7128906
+            ],
+            "groundingChunkIndices": [
+              4,
+              5
+            ],
+            "segment": {
+              "endIndex": 370,
+              "startIndex": 277,
+              "text": "Poisonous frogs are often brightly colored, which warns potential predators of their toxicity"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.32643172,
+              0.784364,
+              0.20062062
+            ],
+            "groundingChunkIndices": [
+              1,
+              6,
+              3
+            ],
+            "segment": {
+              "endIndex": 508,
+              "startIndex": 372,
+              "text": "*   **Poison Dart Frogs**: The family Dendrobatidae, commonly known as poison dart frogs, are known for their toxicity and bright colors"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.6230579,
+              0.08287328
+            ],
+            "groundingChunkIndices": [
+              6,
+              5
+            ],
+            "segment": {
+              "endIndex": 627,
+              "startIndex": 510,
+              "text": "These frogs store poisons in their skin, which they obtain from their diet of ants, termites, and other small insects"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.6432804,
+              0.42514074
+            ],
+            "groundingChunkIndices": [
+              7,
+              3
+            ],
+            "segment": {
+              "endIndex": 767,
+              "startIndex": 629,
+              "text": "The golden poison frog (*Phyllobates terribilis*) is considered the most poisonous frog and one of the most poisonous animals in the world"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.9676299
+            ],
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 973,
+              "startIndex": 769,
+              "text": "*   **Venomous Frogs**: While most poisonous frogs secrete toxins, only two known species are venomous: Bruno's casque-headed frog (*Aparasphenodon brunoi*) and Greening's frog (*Corythomantis greeningi*)"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.8506655
+            ],
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 1066,
+              "startIndex": 975,
+              "text": "These frogs, found in Brazil, have spiny bone protrusions on their skulls that inject venom"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.008118133,
+              0.008280455,
+              0.06628519
+            ],
+            "groundingChunkIndices": [
+              7,
+              5,
+              4
+            ],
+            "segment": {
+              "endIndex": 1199,
+              "startIndex": 1068,
+              "text": "*   **Loss of Toxicity in Captivity**: Poison dart frogs raised in captivity typically lose their toxicity due to the altered diets"
+            }
+          }
+        ],
+        "retrievalMetadata": {},
+        "searchEntryPoint": {
+          "renderedContent": "<style>\n.container {\n  align-items: center;\n  border-radius: 8px;\n  display: flex;\n  font-family: Google Sans, Roboto, sans-serif;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 8px 12px;\n}\n.chip {\n  display: inline-block;\n  border: solid 1px;\n  border-radius: 16px;\n  min-width: 14px;\n  padding: 5px 16px;\n  text-align: center;\n  user-select: none;\n  margin: 0 8px;\n  -webkit-tap-highlight-color: transparent;\n}\n.carousel {\n  overflow: auto;\n  scrollbar-width: none;\n  white-space: nowrap;\n  margin-right: -12px;\n}\n.headline {\n  display: flex;\n  margin-right: 4px;\n}\n.gradient-container {\n  position: relative;\n}\n.gradient {\n  position: absolute;\n  transform: translate(3px, -9px);\n  height: 36px;\n  width: 9px;\n}\n@media (prefers-color-scheme: light) {\n  .container {\n    background-color: #fafafa;\n    box-shadow: 0 0 0 1px #0000000f;\n  }\n  .headline-label {\n    color: #1f1f1f;\n  }\n  .chip {\n    background-color: #ffffff;\n    border-color: #d2d2d2;\n    color: #5e5e5e;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #f2f2f2;\n  }\n  .chip:focus {\n    background-color: #f2f2f2;\n  }\n  .chip:active {\n    background-color: #d8d8d8;\n    border-color: #b6b6b6;\n  }\n  .logo-dark {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);\n  }\n}\n@media (prefers-color-scheme: dark) {\n  .container {\n    background-color: #1f1f1f;\n    box-shadow: 0 0 0 1px #ffffff26;\n  }\n  .headline-label {\n    color: #fff;\n  }\n  .chip {\n    background-color: #2c2c2c;\n    border-color: #3c4043;\n    color: #fff;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #353536;\n  }\n  .chip:focus {\n    background-color: #353536;\n  }\n  .chip:active {\n    background-color: #464849;\n    border-color: #53575b;\n  }\n  .logo-light {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);\n  }\n}\n</style>\n<div class=\"container\">\n  <div class=\"headline\">\n    <svg class=\"logo-light\" width=\"18\" height=\"18\" viewBox=\"9 9 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z\" fill=\"#4285F4\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z\" fill=\"#34A853\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z\" fill=\"#FBBC05\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z\" fill=\"#EA4335\"/>\n    </svg>\n    <svg class=\"logo-dark\" width=\"18\" height=\"18\" viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\">\n      <circle cx=\"24\" cy=\"23\" fill=\"#FFF\" r=\"22\"/>\n      <path d=\"M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z\" fill=\"#4285F4\"/>\n      <path d=\"M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z\" fill=\"#34A853\"/>\n      <path d=\"M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z\" fill=\"#FBBC05\"/>\n      <path d=\"M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z\" fill=\"#EA4335\"/>\n    </svg>\n    <div class=\"gradient-container\"><div class=\"gradient\"></div></div>\n  </div>\n  <div class=\"carousel\">\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHPyJ8r_t8jl_e9AIc7g3RZy0yybpA7w2dH5LR1YHeAgC9hnid4KO8okfBXofEvQc-aGBg_6Q6dhD_44VB5lABfUZJqZst5Di7RTQgo6fFiF7_kbg9UAbldtLQV0ZJC--0pDpBI7UVQsterTtfROkAvajzQwCqOHgdWgCAfudz_--75ud6HIUPal3XzR0clB39_FA==\">poisonous frogs</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEnKevE072igK6GT4eIZx0E01Sy8tzqrnH2oHXva4ybzFBjS4IaOOPPmekYxwm6KJWzGSHC1bAuzozbTo6rcxjSmxKFfHIxWMcemDvMBxyR0_Tvum8rqfxPpq1apVNbMTABuY9NQNLnHV2bbaAEJii27WqTjqNoc9-9Vq_pNuDAWQsxi73VB8qi1y74QpgmX5kkObXR27tK_P4=\">Are frogs poisonous?</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFJ5wW4C0dAeRJa_GQhMqC0iFTcYRODIUMF__sZK_Dyo4LI7R5_qBYlpN3vvIl4z2YXJesaCk1sFwpjWbKAyUWH9KuSmEXFtucLp2HcyD20yFBg856bo119faP__zH753Tas2UcaCfo57BQqLendfxargOYlapveOUVrpOJgIsNecQqyqiU1_LO8m4l-7MhxjLgZmAn\">poison dart frogs</a>\n  </div>\n</div>\n"
+        },
+        "webSearchQueries": [
+          "poisonous frogs",
+          "Are frogs poisonous?",
+          "poison dart frogs"
+        ]
+      },
+      "invocationId": "e-8ad2c80f-7ed3-4e8a-8f3b-040359e362d6",
+      "author": "instance",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "longRunningToolIds": [],
+      "id": "ad54a244-5fe0-46bb-b33c-ad3b802beb8f",
+      "timestamp": 1758626202.444854
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "compare number of species live in india vs amazon forest"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-155899ed-9300-47ed-b698-480bf2af097c",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "longRunningToolIds": [],
+      "id": "f32dbe77-dc3f-48a1-b24e-91fc3b0957db",
+      "timestamp": 1758626251.994276
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "It's difficult to give precise numbers, but here's a comparison of frog species diversity in India versus the Amazon rainforest:\n\n*   **India**: India has recorded a total of 454 amphibian species. These species belong to the order Anura (frogs), Caudata (salamanders) and Gymnophiona (caecilians).\n*   **Amazon Rainforest**: The Amazon Basin is home to over 1,000 frog species. In some areas of the western Amazon Basin, around 80 frog species can be found in a single area of lowland rainforest.\n\nThe Amazon rainforest has a considerably higher diversity of frog species compared to India.\n"
+          }
+        ],
+        "role": "model"
+      },
+      "groundingMetadata": {
+        "groundingChunks": [
+          {
+            "web": {
+              "title": "zsi.gov.in",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQERP5raJFSXqiHfmooOwt_1oMvqqBwwPsmpSZTBX6vYk9b0wYW9YHsDL_ixYNeR-zCeaINzrpaXJnSNGjzGAl_FGxrVtDQRIxWFim_JxjtE4EMzfverc9zYUOD6nThtX1jAkAWzNGf9OWvEHdKxibDAw4PzH7tYJrFlH2WOxZhnSdaNoXF6"
+            }
+          },
+          {
+            "web": {
+              "title": "rainforesttrust.org",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGNBxZSYT1PHKBggfntxILxRjp0xaUYmbqdZ_VFtih4xUy7DLVMZPkScYjf5pBUeSH_IaNnKa3A63D_8l7Pvh3NBuCaWWJ1nfmJeKn3ezeqlfrRENCALEA-BH_V1JxDSGXWU9rR2qIUlW7_kb_3WN5xLcVbkDvh3nXRMVXnpUFV_n88t2fiqrXo"
+            }
+          },
+          {
+            "web": {
+              "title": "amazonaid.org",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHR8mLyzCBL7sU33Z1IZkg1uR_iTUUzs_m9nurEuVBwwANEHAsoSkgJr48nFhantf26tn9GVT6ScSY0K9qEoAYPR0m1FhV7J8_INheO7hEwhu3JMxLUR7G0WVxaqVn43j_b7HE="
+            }
+          },
+          {
+            "web": {
+              "title": "panda.org",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEtB9WhgwGPK0TaSCUBby_ouZ35ktPSdvffpxfxs9tq3B13CR4Gf2ZUFsLLQzMbcBBkWXBTgyZCf_Hcfp5KMdR7eJWpfgoaKJSW8rEGoGZfPiVjgNiZFlGWXvRSI-blq17s45GlneABkWBbopPKLJBLVZ63gAk0HGD4riZXWtrzSCW_BGgbH2Pi4iMxlVFpkLaSE4v4MjiOuZ-rYdkmsuXEgOTxgQkSeKk="
+            }
+          }
+        ],
+        "groundingSupports": [
+          {
+            "confidenceScores": [
+              0.9637511
+            ],
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 196,
+              "startIndex": 130,
+              "text": "*   **India**: India has recorded a total of 454 amphibian species"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.915568
+            ],
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 297,
+              "startIndex": 198,
+              "text": "These species belong to the order Anura (frogs), Caudata (salamanders) and Gymnophiona (caecilians)"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.89974993,
+              0.75893867
+            ],
+            "groundingChunkIndices": [
+              1,
+              2
+            ],
+            "segment": {
+              "endIndex": 377,
+              "startIndex": 299,
+              "text": "*   **Amazon Rainforest**: The Amazon Basin is home to over 1,000 frog species"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.0055708284
+            ],
+            "groundingChunkIndices": [
+              3
+            ],
+            "segment": {
+              "endIndex": 496,
+              "startIndex": 379,
+              "text": "In some areas of the western Amazon Basin, around 80 frog species can be found in a single area of lowland rainforest"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.008737405,
+              0.008055161
+            ],
+            "groundingChunkIndices": [
+              2,
+              1
+            ],
+            "segment": {
+              "endIndex": 590,
+              "startIndex": 499,
+              "text": "The Amazon rainforest has a considerably higher diversity of frog species compared to India"
+            }
+          }
+        ],
+        "retrievalMetadata": {},
+        "searchEntryPoint": {
+          "renderedContent": "<style>\n.container {\n  align-items: center;\n  border-radius: 8px;\n  display: flex;\n  font-family: Google Sans, Roboto, sans-serif;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 8px 12px;\n}\n.chip {\n  display: inline-block;\n  border: solid 1px;\n  border-radius: 16px;\n  min-width: 14px;\n  padding: 5px 16px;\n  text-align: center;\n  user-select: none;\n  margin: 0 8px;\n  -webkit-tap-highlight-color: transparent;\n}\n.carousel {\n  overflow: auto;\n  scrollbar-width: none;\n  white-space: nowrap;\n  margin-right: -12px;\n}\n.headline {\n  display: flex;\n  margin-right: 4px;\n}\n.gradient-container {\n  position: relative;\n}\n.gradient {\n  position: absolute;\n  transform: translate(3px, -9px);\n  height: 36px;\n  width: 9px;\n}\n@media (prefers-color-scheme: light) {\n  .container {\n    background-color: #fafafa;\n    box-shadow: 0 0 0 1px #0000000f;\n  }\n  .headline-label {\n    color: #1f1f1f;\n  }\n  .chip {\n    background-color: #ffffff;\n    border-color: #d2d2d2;\n    color: #5e5e5e;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #f2f2f2;\n  }\n  .chip:focus {\n    background-color: #f2f2f2;\n  }\n  .chip:active {\n    background-color: #d8d8d8;\n    border-color: #b6b6b6;\n  }\n  .logo-dark {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);\n  }\n}\n@media (prefers-color-scheme: dark) {\n  .container {\n    background-color: #1f1f1f;\n    box-shadow: 0 0 0 1px #ffffff26;\n  }\n  .headline-label {\n    color: #fff;\n  }\n  .chip {\n    background-color: #2c2c2c;\n    border-color: #3c4043;\n    color: #fff;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #353536;\n  }\n  .chip:focus {\n    background-color: #353536;\n  }\n  .chip:active {\n    background-color: #464849;\n    border-color: #53575b;\n  }\n  .logo-light {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);\n  }\n}\n</style>\n<div class=\"container\">\n  <div class=\"headline\">\n    <svg class=\"logo-light\" width=\"18\" height=\"18\" viewBox=\"9 9 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z\" fill=\"#4285F4\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z\" fill=\"#34A853\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z\" fill=\"#FBBC05\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z\" fill=\"#EA4335\"/>\n    </svg>\n    <svg class=\"logo-dark\" width=\"18\" height=\"18\" viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\">\n      <circle cx=\"24\" cy=\"23\" fill=\"#FFF\" r=\"22\"/>\n      <path d=\"M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z\" fill=\"#4285F4\"/>\n      <path d=\"M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z\" fill=\"#34A853\"/>\n      <path d=\"M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z\" fill=\"#FBBC05\"/>\n      <path d=\"M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z\" fill=\"#EA4335\"/>\n    </svg>\n    <div class=\"gradient-container\"><div class=\"gradient\"></div></div>\n  </div>\n  <div class=\"carousel\">\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEghcTEKVtWI06MIt20h7oI9Q6xUobigGcZGWJa4pIT8ir9VU4gHRgjP19WWSiXvp66RwGUolByKpN2UIClyhtHVZRXS-OWDw1rwKzugiMUGaXmZyaexfBQwIo6jhAxNP4Ds87tgqFXgRf9Cc0EHTcQ4-51mi7ZmMBXbKwnVKHdcUcF9Vc4OOW4KHnMnX-t1kXZe4bPu1uz2Il_Koreadbnd7cxWo7q\">number of amphibian species in India</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF3G31QtjH6UAWzaV26qXDDS1VwAgL20WR-6vDCIokMnRc3RsoTpbYoxRR_f1RwDHj8OeQ3brXI5Ya1iru_ctwjjiP1-_fUWSv2vSwAFl2z0vtCIT_WIwnP1VGp1a-5Sye1o8TiuBuhIcGCJ5V_krKS0rRZ0iKO830OLWKZ4n2sgt1f3fX6vGeiqNbkiJXR_-wAbblA5ipQFArjPbsbNU3s5B8XbrvAaai_0MMNGNDF\">number of frog species India vs Amazon forest</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEfBvpWt5SNDmxs6BoKZyJX5lKo0x6uHGRzuckQBTw75cq4VRlptU016LpD3WIuLsVI_OzKAQ6A9h4vDEC8z9YpdpFAH0HrUlY1jcnYs050YfdoTa__DyEBDcddlLhnMv5UjX10l0kdCJDK0B9bvHJNnknXUGuCUBmF52f0cKhATXQ5MTH0OKgH0DK8FiSd8Xq8HYN7d46f4G2x3G6qZucrOIyPFn_ltipCpU_NtCuIdI8l\">number of amphibian species in Amazon rainforest</a>\n  </div>\n</div>\n"
+        },
+        "webSearchQueries": [
+          "number of amphibian species in Amazon rainforest",
+          "number of frog species India vs Amazon forest",
+          "number of amphibian species in India"
+        ]
+      },
+      "invocationId": "e-155899ed-9300-47ed-b698-480bf2af097c",
+      "author": "instance",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "longRunningToolIds": [],
+      "id": "0d305c43-29db-4e62-a7a3-97bcd2665421",
+      "timestamp": 1758626252.011797
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "why they found more in rainy area, are they fear warm place?"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-2cfe97a7-7164-4a3b-be4c-3c72ce24b0c9",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "longRunningToolIds": [],
+      "id": "70f70025-39cb-42fa-96d1-a367b9c06963",
+      "timestamp": 1758626316.508826
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Frogs are more commonly found in rainy areas for several key reasons:\n\n*   **Moisture**: Frogs need moisture to keep their skin hydrated, as they absorb water and oxygen through it. Rainy environments provide the necessary humidity and water sources to prevent them from drying out.\n*   **Breeding**: Many frogs breed and lay their eggs in water. Rain creates temporary ponds and fills existing water bodies, offering suitable breeding grounds free from predators like fish.\n*   **Temperature Regulation**: When exposed to the sun or dry climates for too long, frogs will dehydrate. Rainy, cloudy weather provides a cooler and more favorable environment for frogs to roam around.\n*   **Food Availability**: Rainy seasons often lead to an increase in insect populations, which are a primary food source for many frogs.\n*   **Hibernation**: As the rainy season ends, frogs will find shelter in crevices or under rocks to stay cool and moist until the next rainy season.\n\nTherefore, frogs are not necessarily afraid of warm places, but they require moisture-rich environments to survive and reproduce.\n"
+          }
+        ],
+        "role": "model"
+      },
+      "groundingMetadata": {
+        "groundingChunks": [
+          {
+            "web": {
+              "title": "quora.com",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGCZNiZLU_TShjaxDH12AgC1mRC69ozNXKQR2TSOQ_cIIAhFg5wrGeDZDdYFVzFgf6SJ1THREwc3s-yX7jxxhY0MOvYqpiFyCioH-B3J8qvHS2pKcuyblP7vDw7CL5oD9w-S1EmwPxdKsKzodppe4TlZ2KSKA=="
+            }
+          },
+          {
+            "web": {
+              "title": "quora.com",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGqa9QrMkPadEF36s4D8fbRIXjD67S42BI_yY-Y4oXxLymhSPvMZe9YmOd3syFh5o4v6w61Q-1wkiOb7YIAk63030SSxgGi7_j9E8JWZeDZP19aO1a1Q3iqjnIP3BIZbdZ6C5DtaSo-yUqmhqYOvPb6FzhqEtOVkqQTlg=="
+            }
+          },
+          {
+            "web": {
+              "title": "experiment.com",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGPIioABsH0bcc27RdxPdUp6yVQSTqZUtBApOEgzHWhx9uwb_bezfSdBeKI5EumgFdYsaaqeuYam1T6SfYaLdXYH7Z1g8RbGRCh-fAk518TCdUrAiNFy7dUoQ=="
+            }
+          },
+          {
+            "web": {
+              "title": "wildlife.org",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF4zQ56RdjnpM9KftKxGzQscCJZm-TcyU0zCyqTKAMv9x5YhrYkZmPEz8QIM1ur887qOvibK9sdCjZ5uFxFZoY4l3CyG_PIweX7NLCSsXWmtJa9I6c3HT8GUDq-8fcpY8Vrdbz3XGiaNSLugtmxWQIA1jSxrxvFPpPz5bvZU-uG0CFK"
+            }
+          },
+          {
+            "web": {
+              "title": "learncbse.in",
+              "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGMpocygdmv_RzXgEPmrcHrLf4nBkSqYTK1poSM4FLZ5QtgzB5rJM7UU8wns1z4nCUc2slfrk6BCCyJ6p2CxMKZxbAE0HJDz2fYVckm3bYRPrsY_MeCpQ9CNFXEDg4p0yLiK-JV_yqM4-yjF8eRVJ0ZXY3r4xE="
+            }
+          }
+        ],
+        "groundingSupports": [
+          {
+            "confidenceScores": [
+              0.05410543,
+              0.018938398
+            ],
+            "groundingChunkIndices": [
+              0,
+              1
+            ],
+            "segment": {
+              "endIndex": 180,
+              "startIndex": 71,
+              "text": "*   **Moisture**: Frogs need moisture to keep their skin hydrated, as they absorb water and oxygen through it"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.11234476
+            ],
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 281,
+              "startIndex": 182,
+              "text": "Rainy environments provide the necessary humidity and water sources to prevent them from drying out"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.9098452
+            ],
+            "groundingChunkIndices": [
+              2
+            ],
+            "segment": {
+              "endIndex": 345,
+              "startIndex": 283,
+              "text": "*   **Breeding**: Many frogs breed and lay their eggs in water"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.7994266,
+              0.27071527
+            ],
+            "groundingChunkIndices": [
+              2,
+              3
+            ],
+            "segment": {
+              "endIndex": 473,
+              "startIndex": 347,
+              "text": "Rain creates temporary ponds and fills existing water bodies, offering suitable breeding grounds free from predators like fish"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.29618543
+            ],
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 581,
+              "startIndex": 475,
+              "text": "*   **Temperature Regulation**: When exposed to the sun or dry climates for too long, frogs will dehydrate"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.71573305
+            ],
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 678,
+              "startIndex": 583,
+              "text": "Rainy, cloudy weather provides a cooler and more favorable environment for frogs to roam around"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.008571874
+            ],
+            "groundingChunkIndices": [
+              4
+            ],
+            "segment": {
+              "endIndex": 816,
+              "startIndex": 680,
+              "text": "*   **Food Availability**: Rainy seasons often lead to an increase in insect populations, which are a primary food source for many frogs"
+            }
+          },
+          {
+            "confidenceScores": [
+              0.0047522285,
+              0.9934098
+            ],
+            "groundingChunkIndices": [
+              0,
+              1
+            ],
+            "segment": {
+              "endIndex": 967,
+              "startIndex": 818,
+              "text": "*   **Hibernation**: As the rainy season ends, frogs will find shelter in crevices or under rocks to stay cool and moist until the next rainy season."
+            }
+          },
+          {
+            "confidenceScores": [
+              0.043452542
+            ],
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 1097,
+              "startIndex": 969,
+              "text": "Therefore, frogs are not necessarily afraid of warm places, but they require moisture-rich environments to survive and reproduce"
+            }
+          }
+        ],
+        "retrievalMetadata": {},
+        "searchEntryPoint": {
+          "renderedContent": "<style>\n.container {\n  align-items: center;\n  border-radius: 8px;\n  display: flex;\n  font-family: Google Sans, Roboto, sans-serif;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 8px 12px;\n}\n.chip {\n  display: inline-block;\n  border: solid 1px;\n  border-radius: 16px;\n  min-width: 14px;\n  padding: 5px 16px;\n  text-align: center;\n  user-select: none;\n  margin: 0 8px;\n  -webkit-tap-highlight-color: transparent;\n}\n.carousel {\n  overflow: auto;\n  scrollbar-width: none;\n  white-space: nowrap;\n  margin-right: -12px;\n}\n.headline {\n  display: flex;\n  margin-right: 4px;\n}\n.gradient-container {\n  position: relative;\n}\n.gradient {\n  position: absolute;\n  transform: translate(3px, -9px);\n  height: 36px;\n  width: 9px;\n}\n@media (prefers-color-scheme: light) {\n  .container {\n    background-color: #fafafa;\n    box-shadow: 0 0 0 1px #0000000f;\n  }\n  .headline-label {\n    color: #1f1f1f;\n  }\n  .chip {\n    background-color: #ffffff;\n    border-color: #d2d2d2;\n    color: #5e5e5e;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #f2f2f2;\n  }\n  .chip:focus {\n    background-color: #f2f2f2;\n  }\n  .chip:active {\n    background-color: #d8d8d8;\n    border-color: #b6b6b6;\n  }\n  .logo-dark {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);\n  }\n}\n@media (prefers-color-scheme: dark) {\n  .container {\n    background-color: #1f1f1f;\n    box-shadow: 0 0 0 1px #ffffff26;\n  }\n  .headline-label {\n    color: #fff;\n  }\n  .chip {\n    background-color: #2c2c2c;\n    border-color: #3c4043;\n    color: #fff;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #353536;\n  }\n  .chip:focus {\n    background-color: #353536;\n  }\n  .chip:active {\n    background-color: #464849;\n    border-color: #53575b;\n  }\n  .logo-light {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);\n  }\n}\n</style>\n<div class=\"container\">\n  <div class=\"headline\">\n    <svg class=\"logo-light\" width=\"18\" height=\"18\" viewBox=\"9 9 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z\" fill=\"#4285F4\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z\" fill=\"#34A853\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z\" fill=\"#FBBC05\"/>\n      <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z\" fill=\"#EA4335\"/>\n    </svg>\n    <svg class=\"logo-dark\" width=\"18\" height=\"18\" viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\">\n      <circle cx=\"24\" cy=\"23\" fill=\"#FFF\" r=\"22\"/>\n      <path d=\"M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z\" fill=\"#4285F4\"/>\n      <path d=\"M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z\" fill=\"#34A853\"/>\n      <path d=\"M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z\" fill=\"#FBBC05\"/>\n      <path d=\"M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z\" fill=\"#EA4335\"/>\n    </svg>\n    <div class=\"gradient-container\"><div class=\"gradient\"></div></div>\n  </div>\n  <div class=\"carousel\">\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHQ9QaUcRz_0QQ2KtOqcB_M-OjxwphjbLbMy-666fqRZGph5Wc0WX0HV208r0jG-JhenU1EZHX9QrEXQ1hxigzXG_zubJdulfMNRkjBR5qJTfgv4l_g5hh5Ff_jsYTxooUn2NCC9GJTFQ_jRP6rpSJyIIWGi8WQZmbxpTtuPMiBQCergZaDOx90S6K3xmddfWBuZQDcn4eTdMYZ-7HcKlFx\">frogs rainy areas warm places</a>\n    <a class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGmaZAKIU4fFRS84kL_LSX_k5MDvpjWaSpnUh5h71toMYFw4kwCb8FDX8XDSAhv_lxGet8STzs4z1Q0iAawiKCTvN9xI34RVwaNniLbfQB2fC8MH8vKk-wPDwLRkC_HFBa-pZOTAokTbMbX7tkfFxZ9wiaFQtnJtfdvApUk0Ti9dCRWL6LNTd393d-__uK1qq4Q4UjuvTG9\">frogs thrive in rain</a>\n  </div>\n</div>\n"
+        },
+        "webSearchQueries": [
+          "frogs rainy areas warm places",
+          "frogs thrive in rain"
+        ]
+      },
+      "invocationId": "e-2cfe97a7-7164-4a3b-be4c-3c72ce24b0c9",
+      "author": "instance",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "longRunningToolIds": [],
+      "id": "5947e791-5fe0-49b9-ada8-1acd049bbfc5",
+      "timestamp": 1758626316.524284
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "how they survive when there is no rainy season, how they eat food in other months?"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-ea466c63-aacc-4242-90d7-449e6ff4bad9",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "longRunningToolIds": [],
+      "id": "0040c36d-f9e1-4808-bcf5-5c764ffa0905",
+      "timestamp": 1758626437.777123
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Frogs have several strategies to survive during dry seasons:\n\n*   **Burrowing:** Many frogs burrow into the soil to escape the dry heat. The soil retains moisture, providing a humid microclimate. They can stay dormant for extended periods in these burrows.\n*   **Aestivation:** Similar to hibernation, aestivation is a state of dormancy that some frogs enter during hot and dry periods. They reduce their metabolic rate and conserve energy until conditions improve.\n*   **Waterproofing:** Some frogs secrete a layer of mucus that hardens into a protective cocoon, reducing water loss through their skin.\n*   **Habitat Choice:** Frogs may seek out areas with higher humidity, such as near permanent water sources, under rocks, or in shaded areas.\n*   **Dietary Adaptations:** During drier months, food can be scarce. Frogs may rely on stored fat reserves or switch to more drought-resistant prey.\n\n"
+          }
+        ],
+        "role": "model"
+      },
+      "groundingMetadata": {
+        "groundingSupports": [
+          {
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 255,
+              "startIndex": 196,
+              "text": "They can stay dormant for extended periods in these burrows"
+            }
+          },
+          {
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 464,
+              "startIndex": 387,
+              "text": "They reduce their metabolic rate and conserve energy until conditions improve"
+            }
+          },
+          {
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 602,
+              "startIndex": 466,
+              "text": "*   **Waterproofing:** Some frogs secrete a layer of mucus that hardens into a protective cocoon, reducing water loss through their skin"
+            }
+          },
+          {
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 744,
+              "startIndex": 604,
+              "text": "*   **Habitat Choice:** Frogs may seek out areas with higher humidity, such as near permanent water sources, under rocks, or in shaded areas"
+            }
+          },
+          {
+            "groundingChunkIndices": [
+              0
+            ],
+            "segment": {
+              "endIndex": 894,
+              "startIndex": 816,
+              "text": "Frogs may rely on stored fat reserves or switch to more drought-resistant prey"
+            }
+          }
+        ]
+      },
+      "invocationId": "e-ea466c63-aacc-4242-90d7-449e6ff4bad9",
+      "author": "instance",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "longRunningToolIds": [],
+      "id": "36a1ef23-6871-48b8-81de-697bab7db9c7",
+      "timestamp": 1758626437.792751
+    }
+  ],
+  "lastUpdateTime": 1758626166
+}
