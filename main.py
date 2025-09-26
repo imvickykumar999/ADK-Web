@@ -124,7 +124,7 @@ def webhook():
         return jsonify({"status": "ignored"})
     m = u["message"]
     # print(m)
-    
+
     chat = m.get("chat", {})
     chat_id = str(chat.get("id"))
     session_id = f"s_{chat_id}"
@@ -194,6 +194,28 @@ def webhook():
             if ogg: telegram_send_voice(chat_id, ogg)
         return jsonify({"status": "ok"})
 
+    # STICKER
+    if "sticker" in m:
+        sticker_info = m["sticker"]
+        emoji = sticker_info.get("emoji", "")
+
+        # Send sticker emoji or just acknowledge the sticker
+        sticker_message = f"📌 Sticker received"
+
+        # If emoji is available in the sticker
+        if emoji:
+            sticker_message = f"{emoji}"
+
+        # Get reply from the agent based on the sticker emoji
+        reply = arun(agent_reply(chat_id, session_id, sticker_message))
+
+        telegram_send(chat_id, reply or "…")
+        return jsonify({"status": "ok"})
+
+    # FALLBACK
+    telegram_send(chat_id, "Unsupported message type.")
+    return jsonify({"status": "ok"})
+
     # DOCUMENT image (treat image documents like photos)
     if "document" in m and "image" in (m["document"].get("mime_type") or ""):
         file_id = m["document"]["file_id"]
@@ -236,4 +258,3 @@ def webhook_route():
 # -------- MAIN --------
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
-
