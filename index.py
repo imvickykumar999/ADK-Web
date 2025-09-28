@@ -6,7 +6,8 @@ import secrets # Import for generating secure session IDs
 from dotenv import load_dotenv
 # FIX: Added 'Response' to the import list
 from flask import Flask, request, jsonify, g, redirect, url_for, make_response, Response 
-from google.adk.sessions import InMemorySessionService
+# MODIFIED: Use DatabaseSessionService for persistent sessions
+from google.adk.sessions import DatabaseSessionService 
 from google.adk.runners import Runner
 from google.genai.types import Content, Part
 
@@ -27,7 +28,10 @@ APP_NAME = "agent_flask"
 USER_ID = "web_user" # Keeping a fixed user ID for this web demo
 
 # --- Database Configuration ---
+# CONSOLIDATED: Use a single file name for both the UI history and the ADK session service.
 DATABASE = 'history.db'
+# MODIFIED: Database URL for ADK Session Persistence now points to the same file
+DB_URL = os.getenv("SESSION_DB_URL", f"sqlite:///./{DATABASE}")
 
 # Initialize Flask App EARLY to ensure it's available for decorators
 app = Flask(__name__)
@@ -37,6 +41,7 @@ app = Flask(__name__)
 def get_db():
     """Returns a database connection, creating one if not present in flask.g."""
     if 'db' not in g:
+        # This function connects to history.db
         g.db = sqlite3.connect(DATABASE)
         g.db.row_factory = sqlite3.Row  # Allows accessing columns by name
     return g.db
@@ -52,7 +57,7 @@ def init_db():
     """Initializes the database and creates the messages table."""
     with app.app_context():
         db = get_db()
-        # Create a table to store chat messages
+        # Create a table to store chat messages (for UI history display)
         db.execute("""
             CREATE TABLE IF NOT EXISTS messages (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -112,12 +117,14 @@ def get_all_session_ids() -> list[str]:
         return []
 
 
-# Initialize in-memory session service
-session_service = InMemorySessionService()
+# MODIFIED: Initialize DatabaseSessionService using the consolidated DB_URL
+session_service = DatabaseSessionService(db_url=DB_URL)
 
 # Create the runner with the agent only if root_agent was successfully imported
 runner = None
-adk_sessions = {} # Dictionary to track which ADK sessions have been created
+# We no longer need adk_sessions dictionary to track initialization, 
+# as DatabaseSessionService manages persistence, but we keep it for now for simplicity 
+adk_sessions = {} # Dictionary to track which sessions have been accessed since restart
 
 if root_agent:
     runner = Runner(
@@ -127,15 +134,38 @@ if root_agent:
     )
 
     async def initialize_adk_session(session_id: str):
-        """Creates the ADK session if it doesn't exist."""
+        """
+        Ensures the ADK session is accessible and created if it doesn't exist.
+        The DatabaseSessionService handles loading persistent history.
+        """
         if session_id not in adk_sessions:
-            app.logger.info(f"Creating ADK session for {USER_ID}/{session_id}")
-            await session_service.create_session(
-                app_name=APP_NAME,
-                user_id=USER_ID,
-                session_id=session_id
-            )
+            app.logger.info(f"Initializing ADK session check for {USER_ID}/{session_id}")
+            
+            try:
+                # FIX: Corrected the way arguments are passed to get_session. 
+                # Using keyword arguments for robustness.
+                
+                session = await session_service.get_session(
+                    app_name=APP_NAME, 
+                    user_id=USER_ID, 
+                    session_id=session_id
+                )
+                
+                if not session:
+                    # FIX: Removed the unexpected 'history=[]' argument from create_session call
+                    await session_service.create_session(
+                        app_name=APP_NAME,
+                        user_id=USER_ID,
+                        session_id=session_id
+                    )
+
+            except Exception as e:
+                 # Catch initialization errors specific to the DatabaseSessionService
+                app.logger.error(f"DatabaseSessionService Initialization Error: {e}")
+                raise 
+            
             adk_sessions[session_id] = True
+
 
 # --- Helper to get/create session ID from request ---
 def get_or_create_session_id():
@@ -176,10 +206,10 @@ def chat():
     if not runner:
         return jsonify({"response": "Error: Agent runner is not initialized. Check server logs."}), 500
 
-    # Ensure the ADK session is initialized for this ID
+    # Ensure the ADK session is initialized/loaded from the database
     if root_agent and current_session_id not in adk_sessions:
         try:
-             # Synchronously call the async session creator
+             # Synchronously call the async session initializer
              asyncio.run(initialize_adk_session(current_session_id))
         except Exception as e:
             app.logger.error(f"ADK Session Initialization Error: {e}")
@@ -191,7 +221,7 @@ def chat():
     if not user_input:
         return jsonify({"response": "Please provide a message."}), 400
 
-    # 1. Save user message to history
+    # 1. Save user message to UI history DB (history.db)
     save_message(current_session_id, "user", user_input)
 
     # Prepare the message for the runner
@@ -229,7 +259,8 @@ def chat():
             response_text = final_response
             status_code = 200
             
-            # 2. Save agent message to history on success
+            # 2. Save agent message to UI history DB (history.db) on success
+            # The agent's history is automatically saved by DatabaseSessionService
             save_message(current_session_id, "agent", response_text)
 
     except Exception as e:
@@ -300,12 +331,15 @@ def get_html_content(current_session_id):
             }}
         </script>
     </head>
-    <!-- MODIFIED: Changed body classes for full height layout -->
+    <!-- MODIFIED: Wrapper for the whole layout, using vh to fill screen -->
     <body class="bg-gray-100 min-h-screen flex w-full"> 
+        
         <!-- Sidebar for Session History -->
-        <!-- MODIFIED: Switched from 'hidden md:block' to 'hidden lg:block' 
-                     and changed h-screen to h-full for better layout control -->
-        <div class="hidden lg:block w-64 bg-white shadow-xl ring-1 ring-gray-200 rounded-xl overflow-y-auto p-4 mr-4 flex-shrink-0 h-[calc(100vh-2rem)] mt-4 mb-4 ml-4">
+        <!-- MODIFIED: Fixed sidebar on mobile, static on desktop. 
+                     Uses transform to hide/show off-screen on mobile. -->
+        <div id="sidebar" class="fixed top-0 left-0 h-screen w-64 bg-white shadow-2xl ring-1 ring-gray-200 overflow-y-auto p-4 flex-shrink-0 z-50 
+               transform -translate-x-full transition-transform duration-300
+               lg:static lg:transform-none lg:h-[calc(100vh-2rem)] lg:mt-4 lg:mb-4 lg:ml-4 lg:mr-0 lg:rounded-xl">
             <h2 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Sessions</h2>
             <a href="/" id="new-chat-link" class="block w-full text-center py-2 mb-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition duration-200">
                 + New Chat
@@ -316,13 +350,22 @@ def get_html_content(current_session_id):
         </div>
         
         <!-- Main Chat Area -->
-        <!-- MODIFIED: Used w-full and h-[calc(100vh-2rem)] for full height.
-                     Removed redundant max-w-* classes that limit chat width on large screens. -->
-        <div class="w-full bg-white shadow-2xl ring-1 ring-gray-200 rounded-xl overflow-hidden flex flex-col h-[calc(100vh-2rem)] flex-grow mt-4 mb-4 mr-4">
+        <!-- MODIFIED: Full width (w-full) on all screens, uses flex-grow to take space. 
+                     Uses h-screen on mobile and h-[calc(100vh-2rem)] on desktop for better fit. -->
+        <div class="w-full bg-white shadow-2xl ring-1 ring-gray-200 rounded-none overflow-hidden flex flex-col h-screen flex-grow 
+             lg:h-[calc(100vh-2rem)] lg:mt-4 lg:mb-4 lg:mr-4 lg:rounded-xl">
+            
             <!-- Header -->
-            <header class="p-4 bg-indigo-600 text-white shadow-lg rounded-t-xl">
-                <h1 class="text-2xl font-extrabold tracking-tight">ADK Agent Chat</h1>
-                <p class="text-sm opacity-80 mt-1">Current Session: <b id="current-session-display">{current_session_id}</b></p>
+            <!-- ADDED: Hamburger button and flex layout to place it on the left -->
+            <header class="p-4 bg-indigo-600 text-white shadow-lg rounded-t-none lg:rounded-t-xl flex items-center">
+                <!-- Hamburger Button, visible only below large screen size -->
+                <button id="menu-button" class="lg:hidden p-2 mr-3 rounded-md hover:bg-indigo-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                <div class="flex-grow">
+                    <h1 class="text-2xl font-extrabold tracking-tight">ADK Agent Chat</h1>
+                    <p class="text-sm opacity-80 mt-1">Current Session: <b id="current-session-display">{current_session_id}</b></p>
+                </div>
             </header>
 
             <!-- Chat Window (Content will be filled by JavaScript on load) -->
@@ -359,7 +402,44 @@ def get_html_content(current_session_id):
                 const userInput = document.getElementById('user-input');
                 const chatWindow = document.getElementById('chat-window');
                 const sendButton = document.getElementById('send-button');
+                const sidebar = document.getElementById('sidebar');
+                const menuButton = document.getElementById('menu-button');
                 const sessionList = document.getElementById('session-list');
+
+                // --- Sidebar Logic ---
+                const overlay = document.createElement('div');
+                overlay.className = 'fixed inset-0 bg-black opacity-0 transition-opacity duration-300 z-40 lg:hidden pointer-events-none';
+                document.body.appendChild(overlay);
+
+                let isSidebarOpen = false;
+
+                function toggleSidebar(open) {{
+                    // Only run on mobile (screen width < 1024px, the 'lg' breakpoint)
+                    if (window.innerWidth >= 1024) return;
+                    
+                    isSidebarOpen = (open !== undefined) ? open : !isSidebarOpen;
+
+                    if (isSidebarOpen) {{
+                        sidebar.classList.remove('-translate-x-full');
+                        overlay.classList.remove('opacity-0', 'pointer-events-none');
+                        overlay.classList.add('opacity-50', 'pointer-events-auto');
+                    }} else {{
+                        sidebar.classList.add('-translate-x-full');
+                        overlay.classList.remove('opacity-50', 'pointer-events-auto');
+                        overlay.classList.add('opacity-0', 'pointer-events-none');
+                    }}
+                }}
+
+                menuButton.addEventListener('click', () => {{
+                    toggleSidebar();
+                }});
+                
+                // Close sidebar when clicking the overlay
+                overlay.addEventListener('click', () => {{
+                    toggleSidebar(false);
+                }});
+
+                // --- End Sidebar Logic ---
 
                 // Function to add a message to the chat window
                 function addMessage(text, role) {{
@@ -385,8 +465,6 @@ def get_html_content(current_session_id):
                     // Sanitize text and handle HTML content
                     const contentDiv = messageElement.querySelector('div:last-child');
                     
-                    // We allow basic HTML (like bold tags <b>) for welcome messages, 
-                    // but primarily set text content safely.
                     if (role === 'agent' && text.includes('<b')) {{
                         contentDiv.innerHTML = text; 
                     }} else {{
@@ -405,11 +483,11 @@ def get_html_content(current_session_id):
                         const link = document.createElement('a');
                         link.href = `/?session_id=${'{sessionId}'}`;
                         
-                        // **FIXED THE SYNTAX ERROR HERE:** Double-brace escaping the JavaScript template literal expression
                         link.className = `block p-2 text-sm rounded-lg hover:bg-gray-200 transition duration-150 truncate \
                             $${{sessionId}} === currentSessionId ? 'bg-indigo-100 font-semibold text-indigo-700' : 'text-gray-700'`;
                         
                         link.textContent = `Chat #$${{sessionId}}`; // Escaped again for text content
+                        link.addEventListener('click', () => toggleSidebar(false)); // Close sidebar on session change
                         sessionList.appendChild(link);
                     }});
                 }}
