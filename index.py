@@ -1,8 +1,9 @@
 import os
 import asyncio
 import json
+import sqlite3
 from dotenv import load_dotenv
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, g
 from google.adk.sessions import InMemorySessionService
 from google.adk.runners import Runner
 from google.genai.types import Content, Part
@@ -24,8 +25,68 @@ APP_NAME = "agent_flask"
 USER_ID = "web_user"
 SESSION_ID = "web_session" # A simple fixed session for this single-user web demo
 
-# Initialize Flask App
+# --- Database Configuration ---
+DATABASE = 'history.db'
+
+# Initialize Flask App EARLY to ensure it's available for decorators
 app = Flask(__name__)
+
+def get_db():
+    """Returns a database connection, creating one if not present in flask.g."""
+    if 'db' not in g:
+        g.db = sqlite3.connect(DATABASE)
+        g.db.row_factory = sqlite3.Row  # Allows accessing columns by name
+    return g.db
+
+@app.teardown_appcontext # FIXED: Changed from @Flask.teardown_appcontext to @app.teardown_appcontext
+def close_db(e=None):
+    """Closes the database connection at the end of the request."""
+    db = g.pop('db', None)
+    if db is not None:
+        db.close()
+
+def init_db():
+    """Initializes the database and creates the messages table."""
+    with app.app_context():
+        db = get_db()
+        # Create a table to store chat messages
+        db.execute("""
+            CREATE TABLE IF NOT EXISTS messages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                session_id TEXT NOT NULL,
+                role TEXT NOT NULL, -- 'user' or 'agent'
+                text TEXT NOT NULL,
+                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        db.commit()
+
+def save_message(session_id: str, role: str, text: str):
+    """Saves a single message to the database."""
+    try:
+        db = get_db()
+        db.execute(
+            "INSERT INTO messages (session_id, role, text) VALUES (?, ?, ?)",
+            (session_id, role, text)
+        )
+        db.commit()
+    except Exception as e:
+        app.logger.error(f"Database Save Error: {e}")
+
+def load_history(session_id: str) -> list[dict]:
+    """Loads all messages for a given session ID."""
+    try:
+        db = get_db()
+        rows = db.execute(
+            "SELECT role, text FROM messages WHERE session_id = ? ORDER BY timestamp ASC",
+            (session_id,)
+        ).fetchall()
+        # Convert sqlite3.Row objects to standard Python dictionaries
+        return [{"role": row['role'], "text": row['text']} for row in rows]
+    except Exception as e:
+        app.logger.error(f"Database Load Error: {e}")
+        return []
+
 
 # Initialize in-memory session service
 session_service = InMemorySessionService()
@@ -60,11 +121,18 @@ if root_agent:
         if runner and not session_created:
              try:
                 # Use asyncio.run to block until the session is created
+                # Note: This runs within Flask's single-threaded context for simplicity.
                 asyncio.run(initialize_adk_session())
              except Exception as e:
                 app.logger.error(f"ADK Session Initialization Error: {e}")
 
-# --- Chat API Endpoint ---
+# --- API Endpoints ---
+
+@app.route('/history', methods=['GET'])
+def get_history():
+    """Returns the chat history for the current session ID."""
+    history = load_history(SESSION_ID)
+    return jsonify(history)
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -78,6 +146,9 @@ def chat():
     if not user_input:
         return jsonify({"response": "Please provide a message."}), 400
 
+    # 1. Save user message to history
+    save_message(SESSION_ID, "user", user_input)
+
     # Prepare the message for the runner
     message = Content(role="user", parts=[Part(text=user_input)])
 
@@ -87,28 +158,21 @@ def chat():
         """Asynchronously runs the agent and extracts the final text response."""
         response = ""
         try:
-            # Run the agent using the fixed session IDs
             async for event in runner.run_async(
                 user_id=USER_ID,
                 session_id=SESSION_ID,
                 new_message=msg
             ):
-                # The ADK runner streams events; we are only interested in the final response
                 if hasattr(event, "is_final_response") and event.is_final_response():
                     if hasattr(event, "content") and event.content.parts:
-                        # Extract the primary response text
                         response = event.content.parts[0].text
                         break
         except Exception as e:
-            # Return error message to be handled outside the async context
             return f"An agent error occurred: {str(e)}"
         
         return response
 
     try:
-        # NOTE: Using asyncio.run() blocks the current thread until the async call completes. 
-        # For production applications, consider using an ASGI server (like Gunicorn with Uvicorn) 
-        # and defining this route as 'async def chat()' for non-blocking I/O.
         final_response = asyncio.run(get_agent_response(message))
         
         if final_response.startswith("An agent error occurred"):
@@ -117,6 +181,9 @@ def chat():
         else:
             response_text = final_response
             status_code = 200
+            
+            # 2. Save agent message to history on success
+            save_message(SESSION_ID, "agent", response_text)
 
     except Exception as e:
         response_text = f"Flask runtime error: {str(e)}"
@@ -177,15 +244,9 @@ def get_html_content():
                 <p class="text-xs opacity-80 mt-1">Chatting with ADK Agent (Session: {SESSION_ID})</p>
             </header>
 
-            <!-- Chat Window -->
+            <!-- Chat Window (Content will be filled by JavaScript on load) -->
             <div id="chat-window" class="chat-window flex-grow overflow-y-auto p-4 space-y-4">
-                <!-- Initial Welcome Message -->
-                <div class="flex justify-start">
-                    <div class="bg-indigo-100 text-indigo-800 p-4 rounded-xl rounded-tl-sm max-w-[80%] shadow-md border-b-2 border-indigo-200">
-                        <p class="font-medium">Welcome!</p>
-                        <p class="mt-1">I am your ADK Agent, ready to assist you. Ask me anything!</p>
-                    </div>
-                </div>
+                <!-- Chat messages go here -->
             </div>
 
             <!-- Input Form -->
@@ -218,7 +279,9 @@ def get_html_content():
                 const sendButton = document.getElementById('send-button');
 
                 // Function to add a message to the chat window
-                function addMessage(text, isUser = true) {{
+                // Takes text and role ('user' or 'agent')
+                function addMessage(text, role) {{
+                    const isUser = role === 'user';
                     const messageElement = document.createElement('div');
                     
                     if (isUser) {{
@@ -228,7 +291,7 @@ def get_html_content():
                                 ${'{text}'}
                             </div>
                         `;
-                    }} else {{
+                    }} else {{ // agent
                         messageElement.className = 'flex justify-start';
                         messageElement.innerHTML = `
                             <div class="bg-gray-200 text-gray-800 p-4 rounded-xl rounded-tl-sm max-w-[80%] shadow-lg break-words">
@@ -241,6 +304,34 @@ def get_html_content():
                     // Scroll to the latest message
                     chatWindow.scrollTop = chatWindow.scrollHeight;
                 }}
+                
+                // Function to load and display chat history
+                async function loadChatHistory() {{
+                    try {{
+                        const response = await fetch('/history');
+                        const history = await response.json();
+
+                        if (history.length === 0) {{
+                            // Display initial welcome message if history is empty
+                            addMessage("Welcome! I am your ADK Agent, ready to assist you. Ask me anything!", 'agent');
+                            return;
+                        }}
+                        
+                        history.forEach(msg => {{
+                            if (msg.role && msg.text) {{
+                                addMessage(msg.text, msg.role);
+                            }}
+                        }});
+
+                    }} catch (error) {{
+                        console.error('Failed to load chat history:', error);
+                        // Fallback welcome message
+                        addMessage("Welcome! I am your ADK Agent, ready to assist you. Ask me anything!", 'agent');
+                    }}
+                }}
+
+                // Load chat history when the page loads
+                loadChatHistory();
 
                 // Function to show a loading state
                 function showLoading() {{
@@ -276,7 +367,7 @@ def get_html_content():
                     if (!message) return;
 
                     // 1. Display user message
-                    addMessage(message, true);
+                    addMessage(message, 'user');
                     
                     // 2. Clear input and disable input/button
                     userInput.value = '';
@@ -303,9 +394,9 @@ def get_html_content():
 
                         // 6. Display agent response
                         if (response.ok) {{
-                            addMessage(data.response, false);
+                            addMessage(data.response, 'agent');
                         }} else {{
-                            addMessage(`Error: ${'{data.response}'}`, false);
+                            addMessage(`Error: ${'{data.response}'}`, 'agent');
                             console.error('Agent API Error:', data.response);
                         }}
 
@@ -313,7 +404,7 @@ def get_html_content():
                         // 5. Hide loading indicator on error
                         hideLoading();
                         // 6. Display network error
-                        addMessage('Network Error: Could not reach the server.', false);
+                        addMessage('Network Error: Could not reach the server.', 'agent');
                         console.error('Fetch Error:', error);
                     }} finally {{
                         // 7. Re-enable input/button
@@ -336,6 +427,8 @@ def index():
 
 # --- Run the Flask App ---
 if __name__ == "__main__":
+    # Initialize database when the application starts
+    init_db()
     # To run this file, you'll need:
     # 1. 'instance/agent.py' file with 'root_agent' defined
     # 2. 'dotenv' installed and a '.env' file
