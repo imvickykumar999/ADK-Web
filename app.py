@@ -212,10 +212,6 @@ def webhook():
         telegram_send(chat_id, reply or "…")
         return jsonify({"status": "ok"})
 
-    # FALLBACK
-    telegram_send(chat_id, "Unsupported message type.")
-    return jsonify({"status": "ok"})
-
     # DOCUMENT image (treat image documents like photos)
     if "document" in m and "image" in (m["document"].get("mime_type") or ""):
         file_id = m["document"]["file_id"]
@@ -257,4 +253,8 @@ def webhook_route():
 
 # -------- MAIN --------
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=False)
+    app.run(
+        debug=True,
+        use_reloader=False,
+        port=5000,
+    )
